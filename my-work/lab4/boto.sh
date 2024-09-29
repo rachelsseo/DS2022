@@ -1,5 +1,7 @@
 #!/usr/local/bin/python3
 
+#listing all buckets 
+
 import boto3
 
 # client or resource for boto 
@@ -17,14 +19,13 @@ for r in response['Buckets']:
 # uploading file to bucket
 
 bucket = 'ds2022-ydp7xv'
-local_file = 'project/lily.jpg'
+local_file = '/Users/rachelseo/Downloads/lily.jpg'
 
 resp = s3.put_object(
-    Body = local_file,
-    Bucket = bucket,
-    Key = local_file
+  Body=local_file,
+  Bucket=bucket,
+  Key='local_file',  # Specify the key for the uploaded file
+  ACL='public-read'  # Make the object publicly readable
 )
 
-# make it public 
-ACL = 'public-read',
-
+print(resp)
